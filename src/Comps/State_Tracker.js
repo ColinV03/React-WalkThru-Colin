@@ -71,7 +71,7 @@ class StateTracker extends Component {
 
     return (
       <div className="App">
-        <header className="App-header"> ToDo List</header>
+        <header className="App-header"> {this.props.person}'s ToDo List</header>
         <div>
           <input
             placeholder="Enter New Item"

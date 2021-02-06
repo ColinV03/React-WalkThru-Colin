@@ -7,6 +7,7 @@ export default function ItemCard(props) {
     <li>
       <div>{name}</div>
       <button onClick={deleteMe}>Delete Item</button>
+      <button onClick={() => console.log("Clicked")}>Edit</button>
     </li>
   );
 }
