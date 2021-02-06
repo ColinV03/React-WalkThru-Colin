@@ -11,6 +11,21 @@ class StateTracker extends Component {
     this.addItem = this.addItem.bind(this); // arrow functions do this implicitly
   }
 
+  //clearing whole list: 
+  clearAll = () => {
+    this.setState({
+      list: [],
+    })
+  }
+
+  //enter listener: 
+  enterPressed = (e) => {
+    if (e.key === "Enter") {
+      this.addItem();
+    }
+  
+  }
+
   handleInput = (e) => {
     // console.log(e.target.value);
     this.setState({
@@ -18,7 +33,7 @@ class StateTracker extends Component {
     });
     return;
   };
-
+  /// adding items: Setting defaults, pushing elements to new arrays.
   addItem() {
     console.log("addItem fired");
     this.setState({
@@ -28,6 +43,7 @@ class StateTracker extends Component {
     return;
   }
 
+  //deleting individual items, Index is required; 
   deleteItem = (index) => {
     console.log("delete item fired");
     let coppiedList = [...this.state.list];
@@ -61,10 +77,11 @@ class StateTracker extends Component {
             placeholder="Enter New Item"
             onChange={(e) => this.handleInput(e)}
             value={item}
+            onKeyPress={this.enterPressed}
           />
           <div>
             <button onClick={this.addItem}>Add Item</button>
-            <button>Clear List</button>
+            <button onClick={this.clearAll}>Clear List</button>
           </div>
         </div>
         <ul>{mappedItems}</ul>
